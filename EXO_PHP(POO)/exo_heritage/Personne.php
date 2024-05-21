@@ -32,5 +32,9 @@ class Employe extends Personne {
       parent::__construct($nom, $prenom, $date_naissance);
       $this->salaire = $salaire;
    }
+
+   function getSalaire () {
+      return $this->salaire;
+   }
 }
 ?>
