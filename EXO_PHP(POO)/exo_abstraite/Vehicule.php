@@ -1,10 +1,18 @@
 <?php
    //classe PARENT Vehicule
       abstract class Vehicule {
-      private $matricule = 0;
+      private static $vehiculeCompte = 0;
+      private $matricule;
       private $annee;
       private $modele;
       private $prix;
+
+      function __construct ($annee, $modele, $prix) {
+         $this->matricule = ++self::$vehiculeCompte;
+         $this->annee = $annee;
+         $this->modele = $modele;
+         $this->prix = $prix;
+      }
 
       function getMatricule () {
          return $this->matricule;
@@ -34,20 +42,13 @@
          $this->prix = $prix;
       }
 
-      function __construct ($annee, $modele, $prix) {
-         $this->matricule ++;
-         $this->annee = $annee;
-         $this->modele = $modele;
-         $this->prix = $prix;
-      }
-
       // les DEUX METHODES abstraites
       abstract public function Demarrer () ;
       abstract public function Accelerer ();
 
       //méthodes toString
-      function toString () : string{
-         return $this->matricule;
+      function toString (){
+         return "$this->matricule";
       }
    }
 
